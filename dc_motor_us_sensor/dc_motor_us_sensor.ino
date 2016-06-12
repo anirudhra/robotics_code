@@ -2,6 +2,8 @@
  * Author: Anirudh Acharya
  * w/ other sources
  * DC Motor driver + Ultrasound collision detection
+ 
+ * TODO: Ultrasound sensor needs calibration
 
   HC-SR04 Ping distance sensor - Ultrasound
   VCC to arduino 5v GND to arduino GND
@@ -36,7 +38,7 @@ int stuck;
 int timeSinceCollision;
 
 void setup() {
-  // put your setup code here, to run once:
+  //one time setup
   pinMode( LEFT_MOTOR_DIR_PIN, OUTPUT );
   pinMode( LEFT_MOTOR_PWM_PIN, OUTPUT );
   pinMode( RIGHT_MOTOR_DIR_PIN, OUTPUT );
@@ -89,6 +91,7 @@ void loop() {
       right_turn();
 
       /*
+      //ToDO: heuristics has some bug
       timeSinceCollision = micros(); //record time of collision
       if (timeSinceCollision >= TIME_SINCE_LAST_COLLISION_THRESHOLD) {
           left_turn();
@@ -99,7 +102,7 @@ void loop() {
       }
       */
 
-      // if stuck for long, reverse and change direction
+      // if stuck for long, reverse (360deg turn) and change direction
       if (STUCK_THRESHOLD == stuck) {
         ledBlink(3);
         Serial.println("Stuck! Reversing and turning...");
@@ -121,6 +124,7 @@ void loop() {
   delay(ECHO_SAMPLE_DELAY);      
 }
 
+//helper functions calibrated to motor
 void stop() {
   digitalWrite( LEFT_MOTOR_DIR_PIN, HIGH );
   digitalWrite( RIGHT_MOTOR_DIR_PIN, HIGH );
@@ -173,7 +177,7 @@ void digitalWriteDutyCycle(int pin, int duty_cycle) { //only int duty cycle for 
   analogWrite(pin, duty_cycle);
 
   /*
-  // custom PWM implementation
+  // TODO: custom PWM implementation has some bug
   int pwm_time_us = 1000;
   int on_in_us = (duty_cycle*pwm_time_us/100);
   int off_in_us = pwm_time_us - on_in_us;
@@ -185,6 +189,7 @@ void digitalWriteDutyCycle(int pin, int duty_cycle) { //only int duty cycle for 
   */
 }
 
+//for UI
 void ledBlink(int times) {
   for (int i = 0; i<times; i++){
     digitalWrite( LED, HIGH );
