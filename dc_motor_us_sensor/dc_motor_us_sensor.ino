@@ -3,7 +3,7 @@
  * w/ other sources
  * DC Motor driver + Ultrasound collision detection
  
- * TODO: Ultrasound sensor needs calibration
+ * TODO: Ultrasound sensor needs calibration, gets stuck in some extreme corner cases
 
   HC-SR04 Ping distance sensor - Ultrasound
   VCC to arduino 5v GND to arduino GND
