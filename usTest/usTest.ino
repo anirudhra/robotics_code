@@ -2,6 +2,9 @@
  * Author: Anirudh Acharya
  * w/ other sources
   HC-SR04 Ping distance sensor
+  
+  Distance calculated is mostly accurate
+  
   VCC to arduino 5v GND to arduino GND
   Echo to Arduino pin 13 Trig to Arduino pin 12
   Red POS to Arduino pin 11
