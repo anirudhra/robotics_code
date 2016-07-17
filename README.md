@@ -1,7 +1,7 @@
 # robotics_code
 
 Contains Arduino code: Motor controller, meArm, Ultrasound sensor etc. code
-dc_motor_us_sensor is the most up-to-date/feature rich version so far. Works for most part.
+dc_motor_us_sensor is the most up-to-date/feature rich version so far. Works for most part. Missing code to detect "motor-running-but-stuck" condition.
 
 Attempt is to implement a first-gen Roomba robot out of "ghetto" parts.
 
